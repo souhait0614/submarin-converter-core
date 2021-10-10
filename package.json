@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "dist/index.js",
   "scripts": {
-    "build":"node ./build.js"
+    "build": "node ./build.js"
   },
   "repository": "https://github.com/hakunagi/submarin-converter-v2.git",
   "author": "hakunagi <hakunagi.rei@gmail.com>",
@@ -12,5 +12,10 @@
     "@types/node": "^16.10.3",
     "esbuild": "^0.13.4",
     "glob": "^7.2.0"
+  },
+  "dependencies": {
+    "cjp": "^1.2.3",
+    "deepmerge": "^4.2.2",
+    "genhera": "^1.1.0"
   }
 }
