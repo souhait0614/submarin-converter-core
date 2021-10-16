@@ -1,6 +1,6 @@
 {
   "name": "submarin-converter-v2",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "build": "node ./build.js"
