@@ -5,7 +5,7 @@ const entryPoints = glob.sync('./src/**/*.ts')
 build({
   entryPoints,
   outbase: './src', // outbaseを指定することで指定したディレクトリの構造が出力先ディレクトリに反映されるようになる,
-  outdir: './dist', // 出力先ディレクトリ
+  outdir: './', // 出力先ディレクトリ
   target: 'node14',
   format: 'cjs',
   platform: 'node', // 'node' 'browser' 'neutral' のいずれかを指定,

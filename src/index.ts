@@ -7,7 +7,7 @@ interface SCInput {
 }
 interface SCConverter {
   name: string
-  option?: any[]
+  option: any[]
   status?: string
   error?: unknown
 }
@@ -25,8 +25,11 @@ class SC {
   version: string = packageJson.version
   options: SCOptions = {
     converter: {
-      cjp: require("cjp").generate,
-      genhera: require("genhera").generate,
+      "cjp": require("cjp").generate,
+      "genhera": require("genhera").generate,
+      "nomlish": require("nomlish").translate,
+      "5000choyen": require("../modules/5000choyen-api-node.min"),
+      "slackEmoji": require("../modules/slackEmojiGen.min"),
     },
   }
 
@@ -35,7 +38,7 @@ class SC {
     this.options = merge(defaultOption, userOptions)
   }
 
-  convert(input: SCInput): SCOutput {
+  async convert(input: SCInput): Promise<SCOutput> {
     if (typeof input !== "object" || input === null)
       throw new TypeError("The argument is unentered or not an object.")
     if (typeof input.target !== "string" && !Array.isArray(input.target))
@@ -46,13 +49,13 @@ class SC {
       text: input.target,
       result: input.converter,
     }
-    for(const [index, val] of input.converter.entries()) {
+    for (const [index, val] of input.converter.entries()) {
       const beforeText: string = output.text
       try {
         val.option || (val.option = [])
         if (!Array.isArray(val.option))
           throw new TypeError("The option is unentered or is not an array.")
-        output.text = this.options.converter[val.name](
+        output.text = await this.options.converter[val.name](
           ...[output.text, ...val.option]
         )
         output.result[index].status = "success"
