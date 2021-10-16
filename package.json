@@ -1,7 +1,8 @@
 {
   "name": "submarin-converter-v2",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./src/index.d.ts",
   "scripts": {
     "build": "node ./build.js"
   },
@@ -11,12 +12,17 @@
   "devDependencies": {
     "@types/node": "^16.10.3",
     "esbuild": "^0.13.4",
-    "glob": "^7.2.0"
+    "esbuild-plugin-d.ts": "^1.0.6",
+    "typescript": "^4.4.4"
   },
   "dependencies": {
     "cjp": "^1.2.3",
     "deepmerge": "^4.2.2",
     "genhera": "^1.1.0",
     "nomlish": "^0.1.0"
+  },
+  "volta": {
+    "node": "14.18.1",
+    "yarn": "1.22.17"
   }
 }
