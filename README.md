@@ -8,7 +8,7 @@ submarin-convert-bot から再配布が出来ないコードを取り除いて�
 - [Node.js](https://nodejs.org) (14.18.1)
 - [Yarn](https://yarnpkg.com) (1.22.17)
 
-## Useage
+## Usage
 ```js
 const { SB } = require("submarin-converter-v2")
 const converter = new SB()
