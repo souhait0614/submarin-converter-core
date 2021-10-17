@@ -24,7 +24,11 @@ converter.convert({
 ```
 ```js
 const { SB } = require("submarin-converter-v2")
-const converter = new SB()
+const converter = new SB({
+  converter:{
+    nomlish:require("nomlish")
+  }
+})
 
 converter.convert({
   target:"こんにちは",

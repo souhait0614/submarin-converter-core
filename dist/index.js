@@ -32,7 +32,6 @@ class SC {
     converter: {
       cjp: require("cjp").generate,
       genhera: require("genhera").generate,
-      nomlish: require("nomlish").translate,
       "5000choyen": require("../modules/5000choyen-api-node.min"),
       slackEmoji: require("../modules/slackEmojiGen.min")
     }
