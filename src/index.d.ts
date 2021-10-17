@@ -1,10 +1,11 @@
 interface SCInput {
-    target: string;
+    text: string;
     converter: SCConverter[];
 }
 interface SCConverter {
     name: string;
     option: any[];
+    text?: string;
     status?: string;
     error?: unknown;
 }

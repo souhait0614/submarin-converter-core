@@ -2,12 +2,13 @@ import * as packageJson from "../package.json"
 import merge from "deepmerge"
 
 interface SCInput {
-  target: string
+  text: string
   converter: SCConverter[]
 }
 interface SCConverter {
   name: string
   option: any[]
+  text?: string
   status?: string
   error?: unknown
 }
@@ -25,11 +26,11 @@ class SC {
   version: string = packageJson.version
   options: SCOptions = {
     converter: {
-      "cjp": require("cjp").generate,
-      "genhera": require("genhera").generate,
-      "nomlish": require("nomlish").translate,
+      cjp: require("cjp").generate,
+      genhera: require("genhera").generate,
+      nomlish: require("nomlish").translate,
       "5000choyen": require("../modules/5000choyen-api-node.min"),
-      "slackEmoji": require("../modules/slackEmojiGen.min"),
+      slackEmoji: require("../modules/slackEmojiGen.min"),
     },
   }
 
@@ -39,14 +40,26 @@ class SC {
   }
 
   async convert(input: SCInput): Promise<SCOutput> {
-    if (typeof input !== "object" || input === null)
+    if (typeof input !== "object" || input === null || Array.isArray(input))
       throw new TypeError("The argument is unentered or not an object.")
-    if (typeof input.target !== "string" && !Array.isArray(input.target))
-      throw new TypeError("The target is unentered or is not a string.")
+    if (typeof input.text !== "string")
+      throw new TypeError("The text is unentered or is not a string.")
     if (!Array.isArray(input.converter))
-      throw new TypeError("The converter is unentered or is not an object.")
+      throw new TypeError("The converter is unentered or is not an array.")
+
+    if (!input.text) throw new Error("The text is empty.")
+    if (input.converter.length <= 0) throw new Error("The converter is empty.")
+
+    for (const converter of input.converter) {
+      if (typeof converter !== "object" || converter === null || Array.isArray(converter))
+        throw new Error(`The converter "${converter}" is not an object.`)
+      const {name} = converter
+      if(typeof this.options.converter[name] !== "function")
+        throw new Error(`The converter "${name}" is not registered.`)
+    }
+
     const output: SCOutput = {
-      text: input.target,
+      text: input.text,
       result: input.converter,
     }
     for (const [index, val] of input.converter.entries()) {
@@ -58,7 +71,9 @@ class SC {
         output.text = await this.options.converter[val.name](
           ...[output.text, ...val.option]
         )
+        if (!output.text) throw new Error("The string was not returned.")
         output.result[index].status = "success"
+        output.result[index].text = output.text
       } catch (error) {
         output.text = beforeText
         output.result[index].status = "error"
