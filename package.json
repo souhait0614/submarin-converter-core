@@ -1,6 +1,6 @@
 {
   "name": "submarin-converter-v2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./dist/index.js",
   "types": "./src/index.d.ts",
   "scripts": {
