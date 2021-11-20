@@ -6,12 +6,13 @@ interface SCConverter {
     name: string;
     option: any[];
     text?: string;
+    fallback: number;
     status?: string;
-    error?: unknown;
+    error?: unknown[];
 }
 interface SCOptions {
     converter: {
-        [key: string]: Function;
+        [key: string]: Function[];
     };
 }
 interface SCOutput {
