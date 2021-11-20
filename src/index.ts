@@ -27,12 +27,8 @@ class SC {
   version: string = packageJson.version
   options: SCOptions = {
     converter: {
-      cjp: [require("cjp").generate, require("../modules/cjp-hakunagi-api")],
-      genhera: [
-        require("genhera").generate,
-        require("../modules/genhera-hakunagi-api"),
-      ],
-      nomlish: [require("../modules/nomlish-hakunagi-api")],
+      cjp: [require("cjp").generate],
+      genhera: [require("genhera").generate],
       "5000choyen": [require("../modules/5000choyen-api-node.min")],
       slackEmoji: [require("../modules/slackEmojiGen.min")],
     },
