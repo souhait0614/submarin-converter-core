@@ -72,9 +72,10 @@ class SC {
           throw new TypeError("The option is unentered or is not an array.");
         for (const convert of this.options.converter[val.name]) {
           try {
-            output.text = await convert(...[output.text, ...val.option]);
-            if (!output.text || output.text == "")
+            const tmptext = await convert(...[output.text, ...val.option]);
+            if (!tmptext || tmptext == "")
               throw new Error("The string was not returned.");
+            output.text = tmptext;
             output.result[index].status = "success";
             output.result[index].text = output.text;
             break;
