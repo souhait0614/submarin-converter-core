@@ -77,7 +77,7 @@ class SC {
         for (const convert of this.options.converter[val.name]) {
           try {
             output.text = await convert(...[output.text, ...val.option])
-            if (!output.text) throw new Error("The string was not returned.")
+            if (!output.text || output.text == "") throw new Error("The string was not returned.")
             output.result[index].status = "success"
             output.result[index].text = output.text
             break
