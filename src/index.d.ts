@@ -6,7 +6,7 @@ interface SCConverter {
     name: string;
     option: any[];
     text?: string;
-    fallback: number;
+    fallback?: number;
     status?: string;
     error?: unknown[];
 }
