@@ -29,12 +29,7 @@ var import_deepmerge = __toModule(require("deepmerge"));
 class SC {
   version = packageJson.version;
   options = {
-    converter: {
-      cjp: [require("cjp").generate],
-      genhera: [require("genhera").generate],
-      "5000choyen": [require("../modules/5000choyen-api-node.min")],
-      slackEmoji: [require("../modules/slackEmojiGen.min")]
-    }
+    converter: {}
   };
   constructor(userOptions = {}) {
     const defaultOption = this.options;

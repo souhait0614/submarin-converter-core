@@ -26,12 +26,7 @@ interface SCOutput {
 class SC {
   version: string = packageJson.version
   options: SCOptions = {
-    converter: {
-      cjp: [require("cjp").generate],
-      genhera: [require("genhera").generate],
-      "5000choyen": [require("../modules/5000choyen-api-node.min")],
-      slackEmoji: [require("../modules/slackEmojiGen.min")],
-    },
+    converter: {},
   }
 
   constructor(userOptions: SCOptions | {} = {}) {
@@ -77,7 +72,8 @@ class SC {
         for (const convert of this.options.converter[val.name]) {
           try {
             const tmptext = await convert(...[output.text, ...val.option])
-            if (!tmptext || tmptext == "") throw new Error("The string was not returned.")
+            if (!tmptext || tmptext == "")
+              throw new Error("The string was not returned.")
             output.text = tmptext
             output.result[index].status = "success"
             output.result[index].text = output.text
@@ -87,11 +83,6 @@ class SC {
             output.result[index].error.push(error)
           }
         }
-        /*
-        output.text = await this.options.converter[val.name](
-          ...[output.text, ...val.option]
-        )
-        */
       } catch (error) {
         output.text = beforeText
         output.result[index].status = "error"
