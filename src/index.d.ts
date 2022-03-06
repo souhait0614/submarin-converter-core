@@ -1,8 +1,8 @@
-interface SCInput {
+export interface SCInput {
     text: string;
     converter: SCConverter[];
 }
-interface SCConverter {
+export interface SCConverter {
     name: string;
     option: any[];
     text?: string;
@@ -10,19 +10,18 @@ interface SCConverter {
     status?: string;
     error?: unknown[];
 }
-interface SCOptions {
+export interface SCOptions {
     converter: {
         [key: string]: Function[];
     };
 }
-interface SCOutput {
+export interface SCOutput {
     text: string;
     result: SCConverter[];
 }
-declare class SC {
+export declare class SC {
     version: string;
     options: SCOptions;
     constructor(userOptions?: SCOptions | {});
     convert(input: SCInput): Promise<SCOutput>;
 }
-export { SC };

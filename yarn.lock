@@ -23,10 +23,12 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@submarin/generator@1.x", "@submarin/generator@^1.x":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@submarin/generator/-/generator-1.0.0.tgz#86cac85701413c3fa9f58a71980748afc586d2ed"
-  integrity sha512-XuBVSRN5XGzVJYyrBj+pFo3GmubpKwWoRfyhO6p/VuCHAQ7zpPU+0k6Yuiw0pauWIsuJwdcRWhZgRXIxG2kalA==
+"@types/deepmerge@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@types/deepmerge/-/deepmerge-2.2.0.tgz#6f63896c217f3164782f52d858d9f3a927139f64"
+  integrity sha512-FEQYDHh6+Q+QXKSrIY46m+/lAmAj/bk4KpLaam+hArmzaVpMBHLcfwOH2Q2UOkWM7XsdY9PmZpGyPAjh/JRGhQ==
+  dependencies:
+    deepmerge "*"
 
 "@types/node@^16.10.3":
   version "16.10.3"
@@ -111,13 +113,6 @@ chokidar@^3.5.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
-cjp@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/cjp/-/cjp-1.2.3.tgz#0c04555488b647bf3306205bff821fc3a1d0290b"
-  integrity sha512-XIYLQl5hr3ofqN/nnhzH9LyDY0QDsxkGgnBeWHTqgbOOJsANPboSOX7s2zM0bmb6+8HSToj/oCmFoSEJoFnf2g==
-  dependencies:
-    "@submarin/generator" "1.x"
-
 color-convert@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
@@ -156,7 +151,7 @@ debug@^4.3.1:
   dependencies:
     ms "2.1.2"
 
-deepmerge@^4.2.2:
+deepmerge@*:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
   integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
@@ -334,13 +329,6 @@ fsevents@~2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
-
-genhera@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/genhera/-/genhera-1.1.0.tgz#4a7287afdafdc68886ed16843113d330d29447ce"
-  integrity sha512-dSBDvfde489r876QaBIVx8fOzYI3JSgg/qvnit0GzGkrOoCn5zvKiQYlgIe2a3YqxM37vWWJ9yb+ze4Zdv127A==
-  dependencies:
-    "@submarin/generator" "^1.x"
 
 get-stream@^6.0.0:
   version "6.0.1"

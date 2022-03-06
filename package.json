@@ -10,6 +10,7 @@
   "author": "hakunagi <hakunagi.rei@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/deepmerge": "^2.2.0",
     "@types/node": "^16.10.3",
     "esbuild": "^0.13.4",
     "esbuild-plugin-d.ts": "^1.0.6",
